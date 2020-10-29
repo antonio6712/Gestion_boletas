@@ -12,7 +12,7 @@ class Escuela(models.Model):
 	cctZona = fields.Char('CCT ZONA')
 	nombreDirector = fields.Char('Director')
 
-print("################3333")
+print("################333333")
 class calificaciones(models.Model):
 	_name = 'g.calificaciones'
 
