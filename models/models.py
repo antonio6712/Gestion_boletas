@@ -14,7 +14,7 @@ class Escuela(models.Model):
 
 
 
-	print("hola")
+	print("holssssa")
 class calificaciones(models.Model):
 	_name = 'g.calificaciones'
 
