@@ -1,0 +1,354 @@
+<odoo>
+  <data>
+    
+    <record model="ir.ui.view" id="g_escuela_tree">
+			<field name="name">g.escuela.tree</field>
+			<field name="model">g.escuela</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+          <field name="cct"/>
+          <field name="cctZona"/>
+          <field name="nombreDirector"/>
+				</tree>
+			</field>
+		</record>
+
+    <record model="ir.ui.view" id="g_escuela_form">
+      <field name="name">g.escuela.form</field>
+      <field name="model">g.escuela</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="cct"/>
+              </group>
+              <group>
+                <field name="cctZona"/>
+                <field name="nombreDirector"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestionboletas_action_escuela">
+      <field name="name">gestionboletas.action.escuela</field>
+      <field name="res_model">g.escuela</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.ui.view" id="g_anual_tree">
+			<field name="name">g.anual.tree</field>
+			<field name="model">g.anual</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="alumno"/>
+          <field name="calificacionAnual"/>
+          <field name="fechaAnual"/>
+          
+				</tree>
+			</field>
+		</record>
+
+    <record model="ir.ui.view" id="g_anual_form">
+      <field name="name">g.anual.form</field>
+      <field name="model">g.anual</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+           <button name="boton2" string="llamar" type="object" class="oe_highlight"/>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="alumno"/>
+                <field name="calificacionAnual"/>
+                <field name="fechaAnual"/>
+              </group>
+              
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestionboletas_action_anual">
+      <field name="name">gestionboletas.action.anual</field>
+      <field name="res_model">g.anual</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="g_calificaciones_tree">
+			<field name="name">g.calificaciones.tree</field>
+			<field name="model">g.calificaciones</field>
+			<field name="arch" type="xml">
+				<tree>
+					
+       
+          <field name="alumno"/>
+          <field name="materia"/>
+          <field name="diagnostico"/>
+          <field name="septiembre"/>
+          <field name="octubre"/>
+          <field name="noviembreDic"/>
+          <field name="enero"/>
+          <field name="febrero"/>
+          <field name="marzo"/>
+          <field name="abril"/>
+          <field name="mayo"/>
+          <field name="junio"/>
+          <field name="trimestre1"/>
+          <field name="trimestre2"/>
+          <field name="trimestre3"/>
+          <field name="generalTrimestre"/>
+          
+				</tree>
+			</field>
+		</record>
+
+    <record model="ir.ui.view" id="g_calificaciones_from">
+      <field name="name">g.calificaciones.form</field>
+      <field name="model">g.calificaciones</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+           <button name="boton" string="llamar" type="object" class="oe_highlight"/>
+           <!-- <button name="prueba" string="prueba" type="object" class="oe_highlight"/> -->
+          </header>
+          <sheet>
+            <group>
+              <group>
+                
+                
+                <field name="alumno"/>
+                <field name="materia"/>
+                <field name="diagnostico"/>
+                <field name="septiembre"/>
+                <field name="octubre"/>
+                <field name="noviembreDic"/>
+                <field name="enero"/>
+                <field name="febrero"/>
+              </group>
+              <group>
+                <field name="marzo"/>
+                <field name="abril"/>
+                <field name="mayo"/>
+                <field name="junio"/>
+                <field name="trimestre1"/>
+                <field name="trimestre2"/>
+                <field name="trimestre3"/>
+                <field name="generalTrimestre"/>
+                
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestionboletas_action_calificaciones">
+      <field name="name">gestionboletas.action.calificaciones</field>
+      <field name="res_model">g.calificaciones</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="g_alumnos_tree">
+			<field name="name">g.alumnos.tree</field>
+			<field name="model">g.alumnos</field>
+			<field name="arch" type="xml">
+				<tree>
+          <field name="name"/>
+          <field name="apellidoPaterno"/>
+          <field name="apellidoMaterno"/>
+          <field name="fechaNacimiento"/>
+          <field name="sexo"/>
+          <field name="edad"/>
+          <field name="curp"/>
+          <field name="numeroTelefono"/>
+          <field name="nombreTutor"/>
+          <field name="calificaciones"/>
+          <field name="grupo"/>
+				</tree>
+			</field>
+		</record>
+
+    <record model="ir.ui.view" id="g_alumnos_from">
+      <field name="name">g.alumnos.form</field>
+      <field name="model">g.alumnos</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="apellidoPaterno"/>
+                <field name="apellidoMaterno"/>
+                <field name="fechaNacimiento"/>
+                <field name="sexo"/>
+                <field name="edad"/>
+                <field name="curp"/>
+              </group>
+              <group>
+                <field name="numeroTelefono"/>
+                <field name="nombreTutor"/>
+                <field name="calificaciones"/>
+                <field name="grupo"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestionboletas_action_alumnos">
+      <field name="name">gestionboletas.action.alumnos</field>
+      <field name="res_model">g.alumnos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="g_materia_tree">
+			<field name="name">g.materia.tree</field>
+			<field name="model">g.materia</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+          <field name="calificaciones"/>
+          <field name="grupo"/>
+				</tree>
+			</field>
+		</record>
+
+    <record model="ir.ui.view" id="g_materia_form">
+      <field name="name">g.materia.form</field>
+      <field name="model">g.materia</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="calificaciones"/>
+                <field name="grupo"/>
+              </group>
+              <group>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestionboletas_action_materias">
+      <field name="name">gestionboletas.action.grupo</field>
+      <field name="res_model">g.materia</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="g_grupo_tree">
+			<field name="name">g.grupo.tree</field>
+			<field name="model">g.grupo</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+          <field name="maestros"/>
+          <field name="alumno"/>
+          <field name="materia"/>
+				</tree>
+			</field>
+		</record>
+
+    <record model="ir.ui.view" id="gestionboletas_form_grupo">
+      <field name="name">gestionboletas.form.grupo</field>
+      <field name="model">g.grupo</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="maestros"/>
+                <field name="alumno"/>
+                <field name="materia"/>
+              </group>
+              <group>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="gestionboletas_action_grupo">
+      <field name="name">gestionboletas.action.grupo</field>
+      <field name="res_model">g.grupo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Escuela" id="gestionboletas_escuela" action="gestionboletas_action_escuela"/>
+    <menuitem name="Grupos" id="gestionboletas_grupo" parent="gestionboletas_escuela" action="gestionboletas_action_grupo"/>
+    <menuitem name="Calificaciones" id="gestionboletas_calificaciones" parent="gestionboletas_escuela" action="gestionboletas_action_calificaciones"/>
+    <menuitem name="Alumnos" id="gestionboletas_alumnos" parent="gestionboletas_escuela" action="gestionboletas_action_alumnos"/>
+    <menuitem name="Materias" id="gestionboletas_materias" parent="gestionboletas_escuela" action="gestionboletas_action_materias"/>
+    <menuitem name="Calificacion Anual" id="gestionboletas_anual" parent="gestionboletas_escuela" action="gestionboletas_action_anual"/>
+
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="gestionboletas.list">
+      <field name="name">gestionboletas list</field>
+      <field name="model">gestionboletas.gestionboletas</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="gestionboletas.action_window">
+      <field name="name">gestionboletas window</field>
+      <field name="res_model">gestionboletas.gestionboletas</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="gestionboletas.action_server">
+      <field name="name">gestionboletas server</field>
+      <field name="model_id" ref="model_gestionboletas_gestionboletas"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="gestionboletas" id="gestionboletas.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="gestionboletas.menu_1" parent="gestionboletas.menu_root"/>
+    <menuitem name="Menu 2" id="gestionboletas.menu_2" parent="gestionboletas.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="gestionboletas.menu_1_list" parent="gestionboletas.menu_1"
+              action="gestionboletas.action_window"/>
+    <menuitem name="Server to list" id="gestionboletas" parent="gestionboletas.menu_2"
+              action="gestionboletas.action_server"/>
+    -->
+  </data>
+</odoo>

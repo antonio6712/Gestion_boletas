@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gestionboletas_escuela,access.gestionboletas.escuela,model_g_escuela,,1,1,1,1
+access_gestionboletas_boleta,access.gestionboletas.grupos,model_g_grupo,,1,1,1,1
+access_gestionboletas_calificaciones,access.gestionboletas.calificaciones,model_g_calificaciones,,1,1,1,1
+access_gestionboletas_alumnos,access.gestionboletas.alumnos,model_g_alumnos,,1,1,1,1
+access_gestionboletas_materia,access.gestionboletas.materia,model_g_materia,,1,1,1,1
+access_gestionboletas_maestros,access.gestionboletas.maestros,model_g_maestros,,1,1,1,1
+access_gestionboletas_anual,access.gestionboletas.anual,model_g_anual,,1,1,1,1
