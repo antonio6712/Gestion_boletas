@@ -13,8 +13,6 @@ class Escuela(models.Model):
 	nombreDirector = fields.Char('Director')
 
 
-
-	print("holssssa")
 class calificaciones(models.Model):
 	_name = 'g.calificaciones'
 
@@ -129,24 +127,25 @@ class alumnos(models.Model):
 	_name = 'g.alumnos'
 
 	@api.model
-	def create(self, vals):
-		if len (vals["name"])>20:
-			raise UserError('"NOMBRE" MAYOR A 20 CARACTERES')
-		if len(vals["name"])<0:
-			raise UserError('"NOMBRE" NO TIENE CARACTERES')
-		if len (vals["apellidoPaterno"])>20:
-			raise UserError('"APELLIDO PATERNO MAYOR A 20 CARACTERES')
-		if len (vals["apellidoMaterno"])>20:
-			raise UserError('"APELLIDO MATERNO" MAYOR A 20 CARACTERES')
-		if len(vals["edad"])>3:
-			raise UserError('"EDAD" ES MAYOR A 2 CARACTERES O INTODUCISTE UNA LETRA')
-		if len(vals["curp"])>16:
-			raise UserError('"CURP" ES MAYOR A 16 CARACTERES')
-		if len(vals["numeroTelefono"])>10:
-			raise UserError('"EL NUMERO TELEFONICO" ES MAYOR A 10 CARACTERES')
-		if len(vals["nombreTutor"])>30:
-			raise UserError('"EL NOMBRE DEL TUTOR" ES MAYOR A 30 CARACTERES')
-		return super(alumnos,self).create(vals)
+	def create(self, vals): # len=transforma en cadena un string por ejemplo antonio =  len(a,n,t,o,i,os)
+							# vals no se que significa
+		if vals["name"]==0 or len(vals["name"])>20: # esto valida si el campo "name" tine mas que 0 pero menos de 20
+			raise UserError('"NOMBRE" NO TIENE CARACTERES O PASO EL LIMITE DE LETRAS PEROMITIDAS')
+		# if len (vals["name"])>20:
+		# 	raise UserError('"NOMBRE" MAYOR A 20 CARACTERES')
+		# if len (vals["apellidoPaterno"])>20:
+		# 	raise UserError('"APELLIDO PATERNO MAYOR A 20 CARACTERES')
+		# if len (vals["apellidoMaterno"])>20:
+		# 	raise UserError('"APELLIDO MATERNO" MAYOR A 20 CARACTERES')
+		# if len(vals["edad"])>3:
+		# 	raise UserError('"EDAD" ES MAYOR A 2 CARACTERES O INTODUCISTE UNA LETRA')
+		# if len(vals["curp"])>16:
+		# 	raise UserError('"CURP" ES MAYOR A 16 CARACTERES')
+		# if len(vals["numeroTelefono"])>10:
+		# 	raise UserError('"EL NUMERO TELEFONICO" ES MAYOR A 10 CARACTERES')
+		# if len(vals["nombreTutor"])>30:
+		# 	raise UserError('"EL NOMBRE DEL TUTOR" ES MAYOR A 30 CARACTERES')
+		return super(alumnos,self).create(vals)  # este retun lo que realiza es realizar el pocedimiento anterior.
 
 
 	name = fields.Char('Nombre')
