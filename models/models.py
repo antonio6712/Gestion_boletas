@@ -4,7 +4,7 @@ from odoo import models, fields, api
 from datetime import datetime
 from odoo.exceptions import UserError
 
-class Escuela(models.Model):
+class Escuela(models.Model): 
 	_name = 'g.escuela'
 
 	name = fields.Char('Escuela')
@@ -96,7 +96,7 @@ class calificaciones(models.Model):
 
 
 	alumno = fields.Many2one('g.alumnos', string='Alumno')
-	materia = fields.Many2one('g.materia', string='Materias',readonly='True')
+	materia = fields.Many2one('g.materia', string='Materia',readonly='True')
 
 	name = fields.Char('calificaciones')
 	diagnostico = fields.Float('Diagnostico')
@@ -130,21 +130,29 @@ class alumnos(models.Model):
 	def create(self, vals): # len=transforma en cadena un string por ejemplo antonio =  len(a,n,t,o,i,os)
 							# vals no se que significa
 		if vals["name"]==0 or len(vals["name"])>20: # esto valida si el campo "name" tine mas que 0 pero menos de 20
-			raise UserError('"NOMBRE" NO TIENE CARACTERES O PASO EL LIMITE DE LETRAS PEROMITIDAS')
-		# if len (vals["name"])>20:
-		# 	raise UserError('"NOMBRE" MAYOR A 20 CARACTERES')
-		# if len (vals["apellidoPaterno"])>20:
-		# 	raise UserError('"APELLIDO PATERNO MAYOR A 20 CARACTERES')
-		# if len (vals["apellidoMaterno"])>20:
-		# 	raise UserError('"APELLIDO MATERNO" MAYOR A 20 CARACTERES')
-		# if len(vals["edad"])>3:
-		# 	raise UserError('"EDAD" ES MAYOR A 2 CARACTERES O INTODUCISTE UNA LETRA')
-		# if len(vals["curp"])>16:
-		# 	raise UserError('"CURP" ES MAYOR A 16 CARACTERES')
-		# if len(vals["numeroTelefono"])>10:
-		# 	raise UserError('"EL NUMERO TELEFONICO" ES MAYOR A 10 CARACTERES')
-		# if len(vals["nombreTutor"])>30:
-		# 	raise UserError('"EL NOMBRE DEL TUTOR" ES MAYOR A 30 CARACTERES')
+			raise UserError('"NOMBRE" NO TIENE CARÁCTERES O PASO EL LIMITE DE CARÁCTERES PERMITIDOS (20)')
+
+		if vals["apellidoPaterno"]==0 or len(vals["apellidoPaterno"])>20: 
+			raise UserError('"APELLIDO PATERNO" NO TIENE CARÁCTERES O PASO EL LIMITE DE CARÁCTERES PERMITIDOS (20)')
+		
+		if vals["apellidoMaterno"]==0 or len(vals["apellidoMaterno"])>20: 
+			raise UserError('"APELLIDO MATERNO" NO TIENE CARÁCTERES O PASO EL LIMITE DE CARÁCTERES PERMITIDOS (20)')
+		
+		if vals["edad"]==0 or vals["edad"]>100: 
+			raise UserError('"EDAD" NO TIENE CARÁCTERES O PASO EL LIMITE DE CARÁCTERES PERMITIDOS (3)')
+		
+		if vals["curp"]==0 or len(vals["curp"])>18: 
+			raise UserError('"CURP" NO TIENE CARÁCTERES O PASO EL LIMITE DE CARÁCTERES PERMITIDOS (18)') 
+
+		if vals["numeroTelefono"]==0 or len(vals["numeroTelefono"])>10: 
+			raise UserError('"NUMERO DE TELEFONO" NO TIENE CARÁCTERES O PASO EL LIMITE DE CARÁCTERES PERMITIDOS (10)')
+		
+		if vals["nombreTutor"]==0 or len(vals["nombreTutor"])>50: 
+			raise UserError('"NOMBRE DEL TUTOR" NO TIENE CARÁCTERES O PASO EL LIMITE DE CARÁCTERES PERMITIDOS (50)')
+		
+		if vals["nombreTutor"]==0 or len(vals["nombreTutor"])>50: 
+			raise UserError('"NOMBRE DEL TUTOR" NO TIENE CARÁCTERES O PASO EL LIMITE DE CARÁCTERES PERMITIDOS (50)')
+		
 		return super(alumnos,self).create(vals)  # este retun lo que realiza es realizar el pocedimiento anterior.
 
 
@@ -155,7 +163,7 @@ class alumnos(models.Model):
 	sexo = fields.Selection([('M','Masculino'),('F','Femenino'),],string='Sexo')
 	edad = fields.Integer('Edad')
 	curp = fields.Char('curp')
-	numeroTelefono = fields.Integer('Numero de Telefono')
+	numeroTelefono = fields.Char('Numero de Telefono')
 	nombreTutor = fields.Char('Nombre del padre o tutor')
 	calificaciones = fields.One2many('g.calificaciones', 'alumno', string='Calificaciones', readonly='True')
 	grupo = fields.Many2one('g.grupo', string='Grupo')
@@ -164,7 +172,7 @@ class alumnos(models.Model):
 class materia(models.Model):
 	_name = 'g.materia'
 
-
+	
 	name = fields.Char('Materia')
 	calificaciones = fields.One2many('g.calificaciones', 'materia', string='Calificaciones')
 	grupo = fields.Many2one('g.grupo', string='Grupo')
@@ -173,10 +181,18 @@ class materia(models.Model):
 class grupo(models.Model):
 	_name = 'g.grupo'
 
+	@api.model
+	def create(self, vals):
+
+		if vals["name"]==0 or len(vals["name"])>10: 
+			raise UserError('"GRUPO" NO TIENE CARÁCTERES O PASO EL LIMITE DE CARÁCTERES PERMITIDOS (10)')
+		
+		return super(grupo,self).create(vals)
+
 	alumno = fields.One2many('g.alumnos', 'grupo', string='Alumno', readonly='True')
 	materia = fields.One2many('g.materia', 'grupo', string='Materias', readonly='True')
 	name = fields.Char('Grupo')
-	maestros = fields.Many2one('g.maestros', string='Maestros')
+	maestros = fields.Many2one('g.maestros', string='Maestro')
 
 
 class maestros(models.Model):

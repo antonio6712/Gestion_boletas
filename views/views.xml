@@ -35,7 +35,7 @@
       </field>
     </record>
 
-    <record model="ir.actions.act_window" id="gestionboletas_action_escuela">
+    <record model="ir.actions.act_window" id="g_action_escuela">
       <field name="name">gestionboletas.action.escuela</field>
       <field name="res_model">g.escuela</field>
       <field name="view_mode">tree,form</field>
@@ -86,8 +86,6 @@
 			<field name="model">g.calificaciones</field>
 			<field name="arch" type="xml">
 				<tree>
-					
-       
           <field name="alumno"/>
           <field name="materia"/>
           <field name="diagnostico"/>
@@ -115,7 +113,7 @@
       <field name="arch" type="xml">
         <form>
           <header>
-           <button name="boton" string="llamar" type="object" class="oe_highlight"/>
+           <!-- <button name="boton" string="llamar" type="object" class="oe_highlight"/> -->
            <!-- <button name="prueba" string="prueba" type="object" class="oe_highlight"/> -->
           </header>
           <sheet>
@@ -163,13 +161,9 @@
           <field name="name"/>
           <field name="apellidoPaterno"/>
           <field name="apellidoMaterno"/>
-          <field name="fechaNacimiento"/>
-          <field name="sexo"/>
           <field name="edad"/>
-          <field name="curp"/>
           <field name="numeroTelefono"/>
           <field name="nombreTutor"/>
-          <field name="calificaciones"/>
           <field name="grupo"/>
 				</tree>
 			</field>
@@ -194,7 +188,6 @@
               <group>
                 <field name="numeroTelefono"/>
                 <field name="nombreTutor"/>
-                <field name="calificaciones"/>
                 <field name="grupo"/>
               </group>
             </group>
@@ -215,8 +208,8 @@
 			<field name="arch" type="xml">
 				<tree>
 					<field name="name"/>
-          <field name="calificaciones"/>
           <field name="grupo"/>
+          <field name="calificaciones"/>
 				</tree>
 			</field>
 		</record>
@@ -230,10 +223,10 @@
             <group>
               <group>
                 <field name="name"/>
-                <field name="calificaciones"/>
                 <field name="grupo"/>
               </group>
               <group>
+                  <field name="calificaciones"/>
               </group>
             </group>
           </sheet>
@@ -242,7 +235,7 @@
     </record>
 
     <record model="ir.actions.act_window" id="gestionboletas_action_materias">
-      <field name="name">gestionboletas.action.grupo</field>
+      <field name="name">gestionboletas.action.materias</field>
       <field name="res_model">g.materia</field>
       <field name="view_mode">tree,form</field>
     </record>
@@ -261,7 +254,7 @@
 		</record>
 
     <record model="ir.ui.view" id="gestionboletas_form_grupo">
-      <field name="name">gestionboletas.form.grupo</field>
+      <field name="name">g.form.grupo</field>
       <field name="model">g.grupo</field>
       <field name="arch" type="xml">
         <form>
@@ -287,12 +280,47 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem name="Escuela" id="gestionboletas_escuela" action="gestionboletas_action_escuela"/>
-    <menuitem name="Grupos" id="gestionboletas_grupo" parent="gestionboletas_escuela" action="gestionboletas_action_grupo"/>
-    <menuitem name="Calificaciones" id="gestionboletas_calificaciones" parent="gestionboletas_escuela" action="gestionboletas_action_calificaciones"/>
-    <menuitem name="Alumnos" id="gestionboletas_alumnos" parent="gestionboletas_escuela" action="gestionboletas_action_alumnos"/>
-    <menuitem name="Materias" id="gestionboletas_materias" parent="gestionboletas_escuela" action="gestionboletas_action_materias"/>
-    <menuitem name="Calificacion Anual" id="gestionboletas_anual" parent="gestionboletas_escuela" action="gestionboletas_action_anual"/>
+    <record model="ir.ui.view" id="g_maestros_tree">
+			<field name="name">g.maestros.tree</field>
+			<field name="model">g.maestros</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+    <record model="ir.ui.view" id="g_form_maestros">
+      <field name="name">g.form.maestros</field>
+      <field name="model">g.maestros</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+              </group>
+              <group>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="g_action_maestros">
+      <field name="name">gestionboletas.action.maestros</field>
+      <field name="res_model">g.maestros</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Escuela" id="g_escuela" action="g_action_escuela"/>
+    <menuitem name="Maestros" id="g_maestros" parent="g_escuela" action="g_action_maestros"/>
+    <menuitem name="Grupos" id="_grupo" parent="g_escuela" action="gestionboletas_action_grupo"/>
+    <menuitem name="Alumnos" id="g_alumnos" parent="g_escuela" action="gestionboletas_action_alumnos"/>
+    <menuitem name="Materias" id="g_materias" parent="g_escuela" action="gestionboletas_action_materias"/>
+    <menuitem name="Calificaciones Trimestrales" id="g_calificaciones" parent="g_escuela" action="gestionboletas_action_calificaciones"/>
+    <menuitem name="Calificacion Anual" id="g_anual" parent="g_escuela" action="gestionboletas_action_anual"/>
 
     <!-- explicit list view definition -->
     <!--
